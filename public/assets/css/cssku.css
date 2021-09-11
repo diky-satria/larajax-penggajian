@@ -1,0 +1,210 @@
+body{
+    font-size:14px !important;
+}
+.form-control{
+    box-shadow:none !important;
+}
+.form-control-edited{
+    padding:3px;
+    width:90px;
+}
+.btn{
+    box-shadow:none !important;
+}
+
+/* navbar */
+.navbar{
+    margin-bottom:35px;
+}
+.navbar-brand{
+    font-weight:bold;
+    color:rgb(122, 122, 122) !important;
+}
+.btn-log{
+    /* border:2px solid blue; */
+    border-radius:20px;
+    box-shadow:1px 1px 3px gray;
+}
+.router-active{
+    font-weight:bold;
+}
+/* akhir navbar */
+
+/* konten */
+.container-konten{
+    margin-top:90px;
+}
+/* akhir konten */
+
+/* loading overlay */
+.lds-ring {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+ }
+ .lds-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    margin: 8px;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #fff transparent transparent transparent;
+ }
+ .lds-ring div:nth-child(1) {
+    animation-delay: -0.45s;
+ }
+ .lds-ring div:nth-child(2) {
+    animation-delay: -0.3s;
+ }
+ .lds-ring div:nth-child(3) {
+    animation-delay: -0.15s;
+ }
+ @keyframes lds-ring {
+    0% {
+    transform: rotate(0deg);
+    }
+    100% {
+    transform: rotate(360deg);
+    }
+ }
+ #overlay-container{
+    z-index:9999;
+    position:fixed;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    background-color:rgba(0, 0, 0, 0.705);
+    justify-content:center;
+    align-items:center;
+ }
+ /* akhir loading overlay */
+
+/* modal slip gaji */
+.modal-slip-edited p{
+    line-height:2px;
+}
+.modal-slip-edited hr{
+    margin-top:25px;
+    border:1px solid black !important;
+    border-radius:2px;
+}
+.modal-slip-edited td{
+    padding:1px !important;
+}
+.modal-header-edited{
+    border:0px;
+}
+.total-gaji{
+    background-color:rgb(207, 206, 206);
+    text-align:center;
+    padding:7px 0;
+    border-radius:5px;
+}
+.total-gaji h6{
+    padding:0px;
+}
+/* akhir modal slip gaji */
+
+/* login */
+.con-login-logo{
+    width:80px;
+    height:80px; 
+    border-radius:50%;
+    margin-top:80px;
+    margin-bottom:50px;
+}
+.img-login-logo{
+    border-radius:50%;
+}
+.log-form-control{
+    border:0px;
+    border-bottom:1px solid gray;
+}
+.con-log-btn{
+    text-align:center;
+}
+.log-btn{
+    margin-top:40px;
+    padding:8px 30px;
+    border-radius:15px;
+    background-image:linear-gradient(to bottom right, rgb(16, 238, 16), rgb(255, 208, 0));
+    color:white;
+    border:0px;
+}
+.log-kiri{
+    display:none;
+}
+.log-alert{
+    border-radius:15px;
+}
+/* akhir login */
+
+/* dashboard */
+.back{
+    background-color:rgb(221, 221, 221);
+    border-radius:20px;
+    transform:rotate(-3deg);
+    margin-bottom:25px;
+}
+.front{
+    padding:15px;
+    border-radius:20px;
+    transform:rotate(3deg);
+}
+.front-pegawai{
+    background-image:linear-gradient(to bottom right, rgb(0, 238, 255), rgb(204, 0, 255));
+}
+.front-jabatan{
+    background-image:linear-gradient(to bottom right, rgb(255, 87, 199), rgb(255, 44, 44));
+}
+.front-golongan{
+    background-image:linear-gradient(to bottom right, rgb(30, 255, 0), rgb(255, 251, 0));
+}
+/* akhir dashbord */
+
+/* kehadiran */
+.img-cari{
+    transform:scale(0.5);
+    margin-top:-50px;
+    position:relative;
+    left:-90px;
+}
+.text-cari-data{
+    margin-top:-130px;
+    background-color:rgb(165, 253, 165);
+    padding:7px 0;
+    border-radius:10px;
+}
+/* akhir kehadiran */
+
+/* ukuran tablet ke atas */
+@media (min-width: 768px) {
+    .img-cari{
+        left:0;
+    }
+    .text-cari-data{
+        margin-top:-130px;
+        padding:5px 0;
+        max-width:20vmax;
+        position:relative;
+        left:260px;
+    }
+}
+/* akhir ukuran tablet */
+
+/* ukuran laptop */
+@media (min-width: 992px) {
+    .text-cari-data{
+        left:420px;
+    }
+    .log-kiri{
+        display:block;
+    }
+}
+/* akhir ukuran laptop */
