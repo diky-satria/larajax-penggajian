@@ -206,7 +206,7 @@ body{
     border-radius:0 !important;
 }
 .user span:hover{
-    cursor:pointer;
+    cursor:pointer !important;
 }
 .user img{
     width:400px;
