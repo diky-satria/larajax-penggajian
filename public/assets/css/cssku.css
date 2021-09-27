@@ -183,6 +183,39 @@ body{
 }
 /* akhir kehadiran */
 
+/* user */
+.user .card{
+    border:0;
+}
+.user .card-header{
+    border-radius:10px 10px 0 0 !important;
+}
+.user .card-body{
+    padding:0;
+    border-bottom:1px solid rgb(156, 156, 156);
+    border-radius:0 0 10px 10px;
+    height:350px;
+    overflow-y:scroll;
+}
+.user ul{
+    border:0px !important;
+}
+.user ul li{
+    border-right:0;
+    border-left:0;
+    border-radius:0 !important;
+}
+.user span:hover{
+    cursor:pointer;
+}
+.user img{
+    width:400px;
+}
+.user .kanan-user{
+    display:none;
+}
+/* akhir user */
+
 /* ukuran tablet ke atas */
 @media (min-width: 768px) {
     .img-cari{
@@ -194,6 +227,9 @@ body{
         max-width:20vmax;
         position:relative;
         left:260px;
+    }
+    .user .kanan-user{
+        display:block;
     }
 }
 /* akhir ukuran tablet */

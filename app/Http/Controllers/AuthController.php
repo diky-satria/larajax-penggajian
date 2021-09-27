@@ -25,7 +25,11 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt(['email' => request('email'), 'password' => request('password')])) {
-            return redirect('dashboard');
+            if(Auth::user()->role == 'admin'){
+                return redirect('dashboard');
+            }else{
+                return redirect('user');
+            }
         }
 
         return redirect('/')->with('message', 'Email dan Password tidak sesuai');

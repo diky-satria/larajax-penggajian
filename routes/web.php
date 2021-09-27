@@ -2,12 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\GolonganController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\JabatanController;
-use App\Http\Controllers\KehadiranController;
 use App\Http\Controllers\PegawaiController;
+use App\Http\Controllers\GolonganController;
 use App\Http\Controllers\SlipgajiController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\KehadiranController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +26,7 @@ Route::group(['middleware' => ['logged']], function(){
     Route::post('login', [AuthController::class, 'login']);
 });
 
-Route::group(['middleware' => ['auth']], function(){
+Route::group(['middleware' => ['auth','blockUser']], function(){
     Route::get('dashboard', [DashboardController::class, 'index']);
     Route::get('dashboard/ambilData', [DashboardController::class, 'ambilData']);
 
@@ -64,6 +65,18 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('slip-gaji/cari', [SlipgajiController::class, 'cari']);
     Route::get('slip-gaji/detail/{id}', [SlipgajiController::class, 'detail']);
 
-    // logout
+});
+
+Route::group(['middleware' => ['auth','blockAdmin']], function(){
+    Route::get('user', [UserController::class, 'index']);
+    Route::get('user/riwayat', [UserController::class, 'riwayat']);
+    Route::get('user/detail/{bulan}/{tahun}', [UserController::class, 'detail']);
+});
+
+// logout
+Route::group(['middleware' => ['auth']], function(){
+    Route::get('profil-dan-password', [UserController::class, 'profilPassword']);
+    Route::get('user/data', [UserController::class, 'userData']);
+    Route::post('user/ubah-password', [UserController::class, 'ubahPassword']);
     Route::get('logout', [AuthController::class, 'logout']);
 });

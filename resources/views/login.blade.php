@@ -42,7 +42,7 @@
                @enderror
             </div>
             <div class="con-log-btn">
-               <button type="submit" class="btn btn-sm btn-primary log-btn">Login</button>
+               <button type="submit" class="btn btn-sm btn-primary btn-block log-btn">Login</button>
             </div>
          </form>
       </div>

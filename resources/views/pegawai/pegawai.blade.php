@@ -46,6 +46,12 @@
                      <input type="text" name="nama" id="nama" class="form-control">
                   </div>
                   <div class="form-group mt-3">
+                     <label>Email</label>
+                     <input type="text" name="email" id="email" class="form-control">
+                  </div>
+              </div>
+              <div class="col-md">
+                  <div class="form-group mt-3">
                      <label>Jabatan</label>
                      <select name="jabatan_id" id="jabatan_id" class="form-control">
                         <option value="">----</option>
@@ -54,8 +60,6 @@
                         @endforeach
                      </select>
                   </div>
-              </div>
-              <div class="col-md">
                   <div class="form-group mt-3">
                      <label>Golongan</label>
                      <select name="golongan_id" id="golongan_id" class="form-control">
@@ -73,7 +77,11 @@
                         <option value="{{ $jk->id }}">{{ $jk->nama_jenis_kelamin }}</option>
                         @endforeach
                      </select>
-                  </div>
+                  </div>    
+              </div>
+           </div>
+           <div class="row">
+              <div class="col">
                   <div class="form-group mt-3">
                      <label>Telepon</label>
                      <input type="text" name="telepon" id="telepon" class="form-control">
@@ -119,6 +127,12 @@
                      <input type="text" name="nama_edit" id="nama_edit" class="form-control">
                   </div>
                   <div class="form-group mt-3">
+                     <label>Email</label>
+                     <input type="text" name="email_edit" id="email_edit" class="form-control" readonly>
+                  </div>
+              </div>
+              <div class="col-md">
+                  <div class="form-group mt-3">
                      <label>Jabatan</label>
                      <select name="jabatan_id_edit" id="jabatan_id_edit" class="form-control">
                         @foreach($jabatan as $j)
@@ -126,8 +140,6 @@
                         @endforeach
                      </select>
                   </div>
-              </div>
-              <div class="col-md">
                   <div class="form-group mt-3">
                      <label>Golongan</label>
                      <select name="golongan_id_edit" id="golongan_id_edit" class="form-control">
@@ -143,7 +155,11 @@
                         <option value="{{ $jk->id }}">{{ $jk->nama_jenis_kelamin }}</option>
                         @endforeach
                      </select>
-                  </div>
+                  </div>   
+              </div>
+           </div>
+           <div class="row">
+              <div class="col">
                   <div class="form-group mt-3">
                      <label>Telepon</label>
                      <input type="text" name="telepon_edit" id="telepon_edit" class="form-control">
@@ -306,6 +322,7 @@
                $('#id_edit').val(response.pegawai.id)
                $('#nip_edit').val(response.pegawai.nip)
                $('#nama_edit').val(response.pegawai.nama)
+               $('#email_edit').val(response.pegawai.email)
                $('#jabatan_id_edit').val(response.pegawai.jabatan_id)
                $('#golongan_id_edit').val(response.pegawai.golongan_id)
                $('#jenis_kelamin_id_edit').val(response.pegawai.jenis_kelamin_id)
@@ -401,6 +418,12 @@
                      Toast.fire({
                         icon: 'success',
                         title: 'Pegawai berhasil dihapus'
+                     })
+                  },
+                  error: function(){
+                     toastFail.fire({
+                        icon: 'error',
+                        title: 'Pegawai tidak bisa di hapus, masih ada data gaji yang menggunakan pegawai ini'
                      })
                   }
                })

@@ -9,7 +9,7 @@
       <form action="" class="d-flex ms-auto">
          <div class="form-group">
             <select class="form-control form-control-edited" name="bulan" id="bulan" required>
-               <option value="">----</option>
+               <option value="">-Bulan-</option>
                <option value="1">Januari</option>
                <option value="2">Februari</option>
                <option value="3">Maret</option>
@@ -26,7 +26,7 @@
          </div>
          <div class="form-group mx-1">
             <select class="form-control form-control-edited" name="tahun" id="tahun" required>
-               <option value="">----</option>
+               <option value="">-Tahun-</option>
                <option value="2021">2021</option>
                <option value="2022">2022</option>
                <option value="2023">2023</option>
@@ -181,7 +181,8 @@
                   if(response.data.length > 0){
 
                      // tambahkan script html untuk membuat table
-                     $('#table-kehadiran').append('<table id="example" class="table table-sm">\
+                     $('#table-kehadiran').append('<div class="alert alert-success text-center">Kehadiran bulan <b>'+ response.dataBulan +'</b> tahun <b>'+ tahun +'</b></div>\
+                                                   <table id="example" class="table table-sm">\
                                                       <thead>\
                                                          <tr>\
                                                             <th>No</th>\
@@ -222,7 +223,7 @@
 
                      $('#table-kehadiran').append('<div class="text-center">\
                                                       <img class="img-cari" src="{{ asset("assets/img/no-data.png") }}">\
-                                                      <h5 class="text-cari-data">Data belum di input, silahkan input dulu</h5>\
+                                                      <h5 class="text-cari-data">Data bulan <b>'+ response.dataBulan +'</b> tahun <b>'+ tahun +'</b> belum di input, silahkan input dulu</h5>\
                                                    </div>')
                      btn.removeAttribute('disabled', false)
                      loadingCari.style.display = 'none'
@@ -296,6 +297,11 @@
             success: function(){
                $('#btn-cari').click()
                $('#tutup-modal-edit-kehadiran').click()
+
+               Toast.fire({
+                  icon: 'success',
+                  title: 'Kehadiran berhasil di edit'
+               })
 
                btn.removeAttribute('disabled', false)
                loadingEdit.style.display = 'none'

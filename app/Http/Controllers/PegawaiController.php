@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use datatables;
+use App\Models\User;
 use App\Models\Jabatan;
 use App\Models\Pegawai;
 use App\Models\Golongan;
@@ -59,6 +60,7 @@ class PegawaiController extends Controller
         request()->validate([
             'nip' => 'required|unique:pegawais,nip',
             'nama' => 'required',
+            'email' => 'required|email|unique:users,email',
             'jabatan_id' => 'required',
             'golongan_id' => 'required',
             'jenis_kelamin_id' => 'required',
@@ -67,6 +69,9 @@ class PegawaiController extends Controller
             'nip.required' => 'NIP harus di isi',
             'nip.unique' => 'NIP ini sudah terdaftar',
             'nama.required' => 'Nama harus di isi',
+            'email.required' => 'Email harus di isi',
+            'email.email' => 'Email tidak valid',
+            'email.unique' => 'Email sudah terdaftar',
             'jabatan_id.required' => 'Jabatan harus di pilih',
             'golongan_id.required' => 'Golongan harus di pilih',
             'jenis_kelamin_id.required' => 'Jenis kelamin harus di pilih',
@@ -77,10 +82,18 @@ class PegawaiController extends Controller
         Pegawai::create([
             'nip' => strtoupper(request('nip')),
             'nama' => ucwords(request('nama')),
+            'email' => request('email'),
             'jabatan_id' => request('jabatan_id'),
             'golongan_id' => request('golongan_id'),
             'jenis_kelamin_id' => request('jenis_kelamin_id'),
             'telepon' => request('telepon')
+        ]);
+
+        User::create([
+            'name' => ucwords(request('nama')),
+            'email' => request('email'),
+            'password' => bcrypt('password'),
+            'role' => 'user'
         ]);
 
         return response()->json([
@@ -109,6 +122,12 @@ class PegawaiController extends Controller
             'telepon' => request('telepon_edit')
         ]);
 
+        $user = User::where('email', $pegawai->email)->first();
+
+        $user->update([
+            'name' => ucwords(request('nama_edit')),
+        ]);
+
         return response()->json([
             'message' => 'pegawai berhasil ditambahkan'
         ]);
@@ -117,11 +136,13 @@ class PegawaiController extends Controller
     public function hapusPegawai($id)
     {
         $pegawai = Pegawai::find($id);
+        $user = User::where('email', $pegawai->email)->first();
 
+        $user->delete();
         $pegawai->delete();
 
         return response()->json([
-            'message' => 'pegawai berhasil dihapus'
+            'message' => 'pegawai dan user berhasil dihapus'
         ]);
     }
 }

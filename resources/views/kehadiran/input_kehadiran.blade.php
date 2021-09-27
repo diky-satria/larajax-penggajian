@@ -9,7 +9,7 @@
       <form action="" class="d-flex ms-auto" id="form-generate">
          <div class="form-group">
             <select name="bulan" id="bulan" class="form-control form-control-edited">
-               <option value="">----</option>
+               <option value="">-Bulan-</option>
                <option value="1">Januari</option>
                <option value="2">Februari</option>
                <option value="3">Maret</option>
@@ -26,7 +26,7 @@
          </div>
          <div class="form-group mx-1">
             <select name="tahun" id="tahun" class="form-control form-control-edited">
-               <option value="">----</option>
+               <option value="">-Tahun-</option>
                <option value="2021">2021</option>
                <option value="2022">2022</option>
                <option value="2023">2023</option>
@@ -82,7 +82,7 @@
          
          let bln = document.getElementById('bulan').value
          let thn = document.getElementById('tahun').value
-         let bt = bln + thn
+         // let bt = bln + thn
 
          if (bln=="" || thn=="")
          {
@@ -102,14 +102,14 @@
                type: 'GET',
                url: 'kehadiran-input/generate',
                data:{
-                  bulan: bln,
+                  bulan: bln, 
                   tahun: thn
                },
                success: function(response){
 
                   // jika data nya ada dan tidak kosong
                   if(response.data.length > 0){
-                     $('#daftar-kehadiran').append('<div class="alert alert-success text-center">Form Input          kehadiran bulan '+ bln +' tahun '+ thn +'</div>\
+                     $('#daftar-kehadiran').append('<div class="alert alert-success text-center">Form Input          kehadiran bulan <b>'+ response.dataBulan +'</b> tahun <b>'+ thn +'</b></div>\
                                                    <form id="form-input-kehadiran">\
                                                    <table id="example" class="table table-sm" style="width:100%">\
                                                       <thead>\
@@ -149,7 +149,8 @@
                                                          <td>'+ value.nama +'</td>\
                                                          <td>\
                                                             <input type="hidden" name="pegawai_id[]" value="'+ value.id +'">\
-                                                            <input type="hidden" name="bulan[]" value="'+ bt +'">\
+                                                            <input type="hidden" name="bulan[]" value="'+ bln +'">\
+                                                            <input type="hidden" name="tahun[]" value="'+ thn +'">\
                                                             <input type="number" min="0" name="sakit[]" class="form-control" required>\
                                                          </td>\
                                                          <td>\
@@ -164,7 +165,7 @@
                      //jika data nya ada tapi sudah di input
                      $('#daftar-kehadiran').append('<div class="text-center">\
                                                       <img class="img-cari" src="{{ asset("assets/img/no-data.png") }}">\
-                                                      <h5 class="text-cari-data">Kehadiran bulan '+ bln +' tahun '+ thn +' sudah di input</h5>\
+                                                      <h5 class="text-cari-data">Kehadiran bulan <b>'+ response.dataBulan +'</b> tahun <b>'+ thn +'</b> sudah di input</h5>\
                                                    </div>')
                   }
 
@@ -197,7 +198,7 @@
 
          let formData = new FormData($('#form-input-kehadiran')[0])
 
-         $.ajax({
+         $.ajax({ 
             type: 'POST',
             url: 'kehadiran-input/tambah',
             data: formData,

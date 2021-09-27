@@ -9,7 +9,7 @@ class Pegawai extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['jabatan_id','golongan_id','nip','nama','jenis_kelamin_id','telepon'];
+    protected $fillable = ['jabatan_id','golongan_id','nip','nama','email','jenis_kelamin_id','telepon'];
 
     public function jabatan()
     {

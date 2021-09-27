@@ -7,6 +7,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
          @if(Auth::user())
          <ul class="navbar-nav text-center">
+            @if(Auth::user()->role == 'admin')
             <li class="nav-item">
                <a class="nav-link {{ Request::is('dashboard') ? 'router-active' : '' }}" href="{{ url('dashboard') }}">Dashboard</a>
             </li>
@@ -25,6 +26,14 @@
             </li>
             <li class="nav-item">
                <a class="nav-link {{ Request::is('slip-gaji') ? 'router-active' : '' }}" href="{{ url('slip-gaji') }}">Slip Gaji</a>
+            </li>
+            @else
+            <li class="nav-item">
+               <a class="nav-link {{ Request::is('user') ? 'router-active' : '' }}" href="{{ url('user') }}">User</a>
+            </li>
+            @endif
+            <li class="nav-item">
+               <a class="nav-link {{ Request::is('profil-dan-password') ? 'router-active' : '' }}" href="{{ url('profil-dan-password') }}">Profil & Password</a>
             </li>
          </ul>
          @endif

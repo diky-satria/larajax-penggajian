@@ -9,7 +9,7 @@ class Gaji extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['bulan','pegawai_id','sakit','izin','alpha'];
+    protected $fillable = ['bulan','tahun','pegawai_id','sakit','izin','alpha'];
 
     public function pegawai()
     {

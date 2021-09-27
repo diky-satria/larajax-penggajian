@@ -17,12 +17,11 @@ class SlipgajiController extends Controller
     {
         $bln = request('bulan');
         $thn = request('tahun');
-        $bulan = $bln.$thn;
 
         if($bln && $thn){
             $gaji = DB::select("SELECT gajis.*, pegawais.nip, pegawais.nama FROM gajis
                                 JOIN pegawais ON gajis.pegawai_id = pegawais.id
-                                WHERE gajis.bulan=$bulan");
+                                WHERE gajis.bulan=$bln AND gajis.tahun=$thn");
 
             $data = [];
             foreach($gaji as $g){
@@ -36,8 +35,36 @@ class SlipgajiController extends Controller
                 ];
             }
 
+            // bulan dalam huruf
+            if($bln == 1){
+                $dataBulan = 'Januari';
+            }elseif($bln == 2){
+                $dataBulan = 'Februari';
+            }elseif($bln == 3){
+                $dataBulan = 'Maret';
+            }elseif($bln == 4){
+                $dataBulan = 'April';
+            }elseif($bln == 5){
+                $dataBulan = 'Mei';
+            }elseif($bln == 6){
+                $dataBulan = 'Juni';
+            }elseif($bln == 7){
+                $dataBulan = 'Juli';
+            }elseif($bln == 8){
+                $dataBulan = 'Agustus';
+            }elseif($bln == 9){
+                $dataBulan = 'September';
+            }elseif($bln == 10){
+                $dataBulan = 'Oktober';
+            }elseif($bln == 11){
+                $dataBulan = 'November';
+            }elseif($bln == 12){
+                $dataBulan = 'Desember';
+            }
+
             return response()->json([
-                'data' => $data 
+                'data' => $data,
+                'dataBulan' => $dataBulan
             ]);
         }
     }

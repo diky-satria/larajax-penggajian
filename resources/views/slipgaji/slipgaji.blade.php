@@ -9,7 +9,7 @@
       <form action="" class="d-flex float-end" id="form-cari">
          <div class="form-group">
             <select name="bulan" id="bulan" class="form-control form-control-edited">
-               <option value="">----</option>
+               <option value="">-Bulan-</option>
                <option value="1">Januari</option>
                <option value="2">Februari</option>
                <option value="3">Maret</option>
@@ -26,7 +26,7 @@
          </div>
          <div class="form-group mx-1">
             <select name="tahun" id="tahun" class="form-control form-control-edited">
-               <option value="">----</option>
+               <option value="">-Tahun-</option>
                <option value="2021">2021</option>
                <option value="2022">2022</option>
                <option value="2023">2023</option>
@@ -81,7 +81,7 @@
                <p>Jl. Cempaka Blok C3 No.24 Perum Beringin Raya, Kemiling, Bandar Lampung, Telp. 021-123456</p>
                <hr>
                <h6>SLIP GAJI KARYAWAN</h6>
-               <h6>Bulan <span id="bulan-detail"></span> Tahun <span id="tahun-detail"></span></h6>
+               <h6>Bulan <b><span id="bulan-detail"></span></b> Tahun <b><span id="tahun-detail"></span></b></h6>
             </div>
          </div>
          <div class="row">
@@ -236,7 +236,8 @@
 
                   if(response.data.length > 0){
 
-                     $('#daftar-kehadiran-slip').append('<table class="table table-sm" id="example">\
+                     $('#daftar-kehadiran-slip').append('<div class="alert alert-success text-center">Data slip gaji bulan <b>'+ response.dataBulan +'</b> tahun <b>'+ tahun +'</b></div>\
+                     <table class="table table-sm" id="example">\
                                                             <thead>\
                                                                <tr>\
                                                                   <th>No</th>\
@@ -262,7 +263,7 @@
                                                          <td>'+ value.sakit +'</td>\
                                                          <td>'+ value.izin +'</td>\
                                                          <td>'+ value.alpha +'</td>\
-                                                         <td><button class="btn btn-sm btn-info detail-cetak" data-bs-toggle="modal" data-bs-target="#modal-slip-gaji" id="'+ value.id +'">Detail</button></td>\
+                                                         <td><button class="btn btn-sm btn-info detail-cetak" data-bs-toggle="modal" data-bs-target="#modal-slip-gaji" id="'+ value.id +'" bulan="'+ response.dataBulan +'">Detail</button></td>\
                                                       </tr>')
                      })
 
@@ -273,7 +274,7 @@
                   }else{
                      daftarKehadiranSlip.append('<div class="text-center">\
                                                    <img class="img-cari" src="{{ asset("assets/img/no-data.png") }}">\
-                                                   <h5 class="text-cari-data">Data belum ada, silahkan input dahulu di menu kehadiran</h5>\
+                                                   <h5 class="text-cari-data">Data bulan <b>'+ response.dataBulan +'</b> tahun <b>'+ tahun +'</b> belum ada, silahkan input dahulu di menu kehadiran</h5>\
                                                 </div>')
                      btn.removeAttribute('disabled', false)
                      loading.style.display = 'none'
@@ -315,16 +316,17 @@
       // detail data untuk modal cetak
       $(document).on('click', '.detail-cetak', function(){
          let id = $(this).attr('id')
+         let dataBulan = $(this).attr('bulan')
          let wait = document.getElementById('wait')
          wait.style.display = 'block'
-
+ 
          $.ajax({
             type: 'GET',
             url: 'slip-gaji/detail/'+id,
             success: function(response){
 
                // ubah bulan dan tahun
-               $('#bulan-detail').append($('#bulan').val())
+               $('#bulan-detail').append(dataBulan)
                $('#tahun-detail').append($('#tahun').val())
 
                // ambil data pegawai
