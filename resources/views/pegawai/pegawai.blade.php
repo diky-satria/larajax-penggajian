@@ -246,6 +246,7 @@
       $(document).on('click', '#tutup-modal-tambah-pegawai', function(){
          $('#nip').val('')
          $('#nama').val('')
+         $('#email').val('')
          $('#golongan_id').val('')
          $('#jabatan_id').val('')
          $('#jenis_kelamin_id').val('')
