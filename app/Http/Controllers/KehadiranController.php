@@ -30,7 +30,7 @@ class KehadiranController extends Controller
             }elseif($bln == 3){
                 $dataBulan = 'Maret';
             }elseif($bln == 4){
-                $dataBulan = 'April';
+                $dataBulan = 'April'; 
             }elseif($bln == 5){
                 $dataBulan = 'Mei';
             }elseif($bln == 6){

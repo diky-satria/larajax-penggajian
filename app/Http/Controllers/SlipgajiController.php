@@ -19,16 +19,18 @@ class SlipgajiController extends Controller
         $thn = request('tahun');
 
         if($bln && $thn){
-            $gaji = DB::select("SELECT gajis.*, pegawais.nip, pegawais.nama FROM gajis
-                                JOIN pegawais ON gajis.pegawai_id = pegawais.id
-                                WHERE gajis.bulan=$bln AND gajis.tahun=$thn");
+            // $gaji = DB::select("SELECT gajis.*, pegawais.nip, pegawais.nama FROM gajis
+            //                     JOIN pegawais ON gajis.pegawai_id = pegawais.id
+            //                     WHERE gajis.bulan=$bln AND gajis.tahun=$thn");
+
+            $gaji = Gaji::where(['bulan' => $bln, 'tahun' => $thn])->get();
 
             $data = [];
             foreach($gaji as $g){
                 $data[] = [
                     'id' => $g->id,
-                    'nip' => $g->nip,
-                    'nama' => $g->nama,
+                    'nip' => $g->pegawai->nip,
+                    'nama' => $g->pegawai->nama,
                     'sakit' => $g->sakit,
                     'izin' => $g->izin,
                     'alpha' => $g->alpha
