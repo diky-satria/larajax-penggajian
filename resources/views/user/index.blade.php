@@ -198,6 +198,9 @@
 
       // modeal detail gaji
       $(document).on('click', '.detail-slip-gaji-user', function(){
+         let wait = document.getElementById('wait')
+         wait.style.display = 'block'
+
          let bulan = $(this).attr('bulan')
          let tahun = $(this).attr('tahun')
          let bulanHuruf = $(this).attr('bulanHuruf')
@@ -235,6 +238,7 @@
 
                $('#total-bersih').append('Rp. '+ format_rupiah(totala - totalb))
 
+               wait.style.display = 'none'
             }
          })
       })
