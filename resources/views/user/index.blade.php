@@ -40,8 +40,8 @@
          <div class="row">
             <div class="col text-center">
                <h6 class="mb-4">PT. JAVA ANIMA DARMAJA</h6>
-               <p>One Stop Business IT and Solution</p>
-               <p>Jl. Cempaka Blok C3 No.24 Perum Beringin Raya, Kemiling, Bandar Lampung, Telp. 021-123456</p>
+               <p style="line-height:15px;">One Stop Business IT and Solution</p>
+               <p style="line-height:15px;">Jl. Cempaka Blok C3 No.24 Perum Beringin Raya, Kemiling, Bandar Lampung, Telp. 021-123456</p>
                <hr>
                <h6>SLIP GAJI KARYAWAN</h6>
                <h6>Bulan <b><span id="bulan-detail"></span></b> Tahun <b><span id="tahun-detail"></span></b></h6>
@@ -131,8 +131,8 @@
          <div class="row">
             <div class="col-8"></div>
             <div class="col-4 mt-5">
-               <p>B. Lampung, 30 Juni 2021</p>
-               <p>Manager Operasional</p>
+               <p style="line-height:15px;">B. Lampung, 30 Juni 2021</p>
+               <p style="line-height:15px;">Manager Operasional</p>
                <p style="margin-top:70px;">Supri. SE.</p>
             </div>
          </div>

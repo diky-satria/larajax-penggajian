@@ -15,15 +15,23 @@ body{
 /* navbar */
 .navbar{
     margin-bottom:35px;
+    background-color:white;
+    box-shadow:1px 1px 10px rgb(184, 183, 183) !important;
 }
 .navbar-brand{
     font-weight:bold;
     color:rgb(122, 122, 122) !important;
 }
+.navbar ul li a{
+    color:rgb(112, 112, 112) !important;
+}
 .btn-log{
     /* border:2px solid blue; */
     border-radius:20px;
     box-shadow:1px 1px 3px gray;
+}
+.mar-btn-login{
+    margin-top:15px;
 }
 .router-active{
     font-weight:bold;
@@ -236,6 +244,9 @@ body{
 
 /* ukuran laptop */
 @media (min-width: 992px) {
+    .mar-btn-login{
+        margin-top:0;
+    }
     .text-cari-data{
         left:420px;
     }

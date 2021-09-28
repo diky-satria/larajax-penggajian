@@ -1,4 +1,4 @@
-<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+<nav class="navbar fixed-top navbar-expand-lg navbar-light">
    <div class="container">
       <a class="navbar-brand" href="{{ url('/') }}">G@JI</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,7 +44,7 @@
             </li>
             @else
             <li class="nav-item">
-               <a class="nav-link btn-log" href="{{ url('/') }}">Login</a>
+               <a class="nav-link btn-log mar-btn-login" href="{{ url('/') }}">Login</a>
             </li>
             @endif
          </ul>

@@ -49,8 +49,8 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <!-- akhir jquery -->
 
-    <!-- format rupiah javascript -->
     <script>
+      // format rupiah javascript
       function format_rupiah(angka, prefix){
             var number_string = angka.toString()
             var split             = number_string.split(',')
@@ -66,8 +66,8 @@
             rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah
             return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '')
         }
+        // akhir format rupiah javascript
     </script>
-    <!-- akhir format rupiah javascript -->
 
     <!-- sweetalert -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
