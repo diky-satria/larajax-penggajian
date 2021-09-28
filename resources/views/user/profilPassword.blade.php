@@ -1,7 +1,7 @@
 @extends('templates/template')
 
 @section('konten')
-<div class="row user mb-4">
+<div class="row mb-4">
    <div class="col-md-9 mb-4">
       @if(Auth::user()->role == 'user')
       <div class="d-flex justify-content-between">
