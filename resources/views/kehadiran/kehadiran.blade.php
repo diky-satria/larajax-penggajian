@@ -172,7 +172,7 @@
             $.ajax({
                type: 'GET',
                url: 'kehadiran/cari',
-               data: {
+               data: { 
                   bulan: bulan,
                   tahun: tahun
                },
